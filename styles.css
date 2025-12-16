@@ -1095,7 +1095,7 @@ strong {
   }
 
   .nav__link {
-    display: none;
+    font-size: 0.875rem;
   }
 
   .btn--small {
@@ -1326,18 +1326,32 @@ strong {
     height: 28px;
   }
 
-  /* Legal Tooltip */
+  /* Legal Tooltip - Optimized for mobile */
   .legal-tooltip {
-    max-width: 90vw;
-    padding: var(--space-md);
+    max-width: 85vw;
+    width: 85vw;
+    padding: var(--space-sm);
+    max-height: 70vh;
+    overflow-y: auto;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
   }
 
   .legal-tooltip h3 {
-    font-size: 1.125rem;
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
   }
 
   .legal-tooltip p {
-    font-size: 0.875rem;
+    font-size: 0.813rem;
+    line-height: 1.5;
+    margin-bottom: var(--space-xs);
+  }
+
+  .legal-tooltip__close {
+    font-size: 1.25rem;
+    padding: 0.25rem;
   }
 
   /* Utility classes for mobile */

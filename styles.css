@@ -1485,3 +1485,368 @@ textarea:focus {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================
+   DARK MODE (Auto-activated by device preference)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Theme Backgrounds */
+    --color-background: #1a1d23;
+    --color-dark-bg-secondary: #242830;
+    --color-dark-bg-alt: #2d3139;
+    --color-white: #242830;
+
+    /* Dark Theme Text */
+    --color-text: #e8e9ed;
+    --color-text-light: #b8bcc4;
+    --color-dark: #f5f6f8;
+
+    /* Dark Theme Primary Colors */
+    --color-primary: #7eb3d9;
+    --color-primary-dark: #9ec9e6;
+    --color-primary-light: #6b9ac4;
+
+    /* Dark Theme Secondary Colors */
+    --color-secondary: #e8a890;
+    --color-secondary-dark: #f0b8a3;
+
+    /* Dark Theme Accent Colors */
+    --color-accent: #3a3d45;
+    --color-accent-warm: #3f3530;
+
+    /* Dark Theme Semantic Colors */
+    --color-success: #88c094;
+    --color-warning: #f4c870;
+    --color-danger: #e88a75;
+
+    /* Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, #4a7ba7 0%, #6b9ac4 100%);
+    --gradient-warm: linear-gradient(135deg, #d49578 0%, #e8a890 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(42, 62, 80, 0.95) 0%, rgba(58, 78, 98, 0.9) 100%);
+
+    /* Dark Shadows - lighter for depth on dark bg */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Body */
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+
+  /* Header */
+  .header {
+    background: rgba(26, 29, 35, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav__link {
+    color: var(--color-text);
+  }
+
+  .nav__link:hover {
+    color: var(--color-primary);
+  }
+
+  /* Hero Section */
+  .section--hero {
+    background: var(--gradient-hero);
+  }
+
+  .hero__background {
+    background: var(--gradient-hero);
+  }
+
+  .hero__image {
+    opacity: 0.2;
+  }
+
+  .hero__title,
+  .hero__subtitle,
+  .hero__text {
+    color: var(--color-text);
+  }
+
+  /* Sections */
+  .section--alt {
+    background-color: var(--color-dark-bg-alt);
+  }
+
+  .section--warm {
+    background: linear-gradient(135deg, #1a1d23 0%, #2d2420 100%);
+  }
+
+  .section--tarifas {
+    background: var(--color-background);
+  }
+
+  .tarifas__image {
+    opacity: 0.1;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--color-dark-bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card:hover {
+    border-color: rgba(126, 179, 217, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  }
+
+  .card__title {
+    color: var(--color-primary-dark);
+  }
+
+  .card__text {
+    color: var(--color-text-light);
+  }
+
+  /* Buttons */
+  .btn--primary {
+    background: var(--color-secondary);
+    color: var(--color-background);
+  }
+
+  .btn--primary:hover {
+    background: var(--color-secondary-dark);
+    color: var(--color-background);
+  }
+
+  .btn--outline {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .btn--outline:hover {
+    background: var(--color-primary);
+    color: var(--color-background);
+  }
+
+  /* Pricing Cards */
+  .pricing-card {
+    background: var(--color-dark-bg-secondary);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .pricing-card:hover {
+    border-color: var(--color-primary);
+  }
+
+  .pricing-card--featured {
+    border-color: var(--color-primary);
+    background: var(--color-dark-bg-secondary);
+  }
+
+  .pricing-card__price {
+    color: var(--color-primary-dark);
+  }
+
+  /* Step Cards */
+  .step-card {
+    background: var(--color-dark-bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .step-card:hover {
+    border-color: rgba(126, 179, 217, 0.3);
+  }
+
+  .step-card__title {
+    color: var(--color-primary-dark);
+  }
+
+  .step-card__description {
+    color: var(--color-text-light);
+  }
+
+  /* Transparency Section */
+  .transparency-section {
+    background: linear-gradient(135deg, #1a1d23 0%, #2d2420 100%);
+  }
+
+  .transparency-box {
+    background: var(--color-dark-bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .transparency-box h3 {
+    color: var(--color-primary-dark);
+  }
+
+  .transparency-box--no {
+    border-left-color: var(--color-danger);
+  }
+
+  .transparency-box--yes {
+    border-left-color: var(--color-success);
+  }
+
+  .transparency-list li {
+    color: var(--color-text);
+  }
+
+  /* Lists */
+  .feature-list__item,
+  .check-list__item {
+    color: var(--color-text);
+  }
+
+  .check-list__item {
+    background: rgba(126, 179, 217, 0.1);
+    border-left-color: var(--color-primary);
+  }
+
+  /* Forms */
+  input,
+  select,
+  textarea {
+    background: var(--color-dark-bg-alt);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--color-text);
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: var(--color-primary);
+    background: var(--color-dark-bg-secondary);
+  }
+
+  input::placeholder {
+    color: var(--color-text-light);
+  }
+
+  /* FAQ */
+  .faq-item {
+    background: var(--color-dark-bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .faq-question {
+    background: var(--color-dark-bg-secondary);
+    color: var(--color-text);
+  }
+
+  .faq-question:hover {
+    background: rgba(126, 179, 217, 0.1);
+  }
+
+  .faq-question::after {
+    color: var(--color-primary);
+  }
+
+  .faq-answer__content {
+    color: var(--color-text-light);
+  }
+
+  /* Crisis Box */
+  .crisis-box {
+    background: linear-gradient(135deg, #ba5a42 0%, #d4a043 100%);
+    color: var(--color-text);
+  }
+
+  .crisis-box h3,
+  .crisis-box a {
+    color: var(--color-text);
+  }
+
+  .crisis-box a:hover {
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Footer - lighter variant for dark mode */
+  .footer {
+    background: #14161a;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer__section h4 {
+    color: var(--color-text);
+  }
+
+  .footer__links a {
+    color: var(--color-text-light);
+  }
+
+  .footer__links a:hover {
+    color: var(--color-primary-dark);
+  }
+
+  .footer__bottom {
+    border-top-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light);
+  }
+
+  /* Legal Tooltips */
+  .legal-tooltip {
+    background: var(--color-dark-bg-secondary);
+    color: var(--color-text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .legal-tooltip h3 {
+    color: var(--color-primary-dark);
+  }
+
+  .legal-tooltip p {
+    color: var(--color-text-light);
+  }
+
+  .legal-tooltip__close {
+    color: var(--color-text-light);
+  }
+
+  .legal-tooltip__close:hover {
+    color: var(--color-primary);
+  }
+
+  /* WhatsApp Button - maintain brand color */
+  .whatsapp-float {
+    background: #25D366;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+  }
+
+  .whatsapp-float:hover {
+    background: #20BA5A;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.7);
+  }
+
+  /* Headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-text);
+  }
+
+  /* Links */
+  a {
+    color: var(--color-primary);
+  }
+
+  a:hover {
+    color: var(--color-primary-dark);
+  }
+
+  /* Strong text */
+  strong {
+    color: var(--color-text);
+  }
+
+  /* Focus states - ensure visibility */
+  a:focus,
+  button:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline-color: var(--color-primary);
+  }
+}

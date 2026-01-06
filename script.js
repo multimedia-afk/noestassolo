@@ -448,7 +448,7 @@ elements.userPhoneInput.addEventListener('input', function (e) {
 });
 
 // ============================================
-// LEGAL TOOLTIPS
+// LEGAL MODALS (Click to open)
 // ============================================
 
 /* 
@@ -465,17 +465,26 @@ elements.userPhoneInput.addEventListener('input', function (e) {
   Cada uno tiene un título y contenido que puedes personalizar.
 */
 
-// Create tooltip element
-const legalTooltip = document.createElement('div');
-legalTooltip.className = 'legal-tooltip';
-legalTooltip.innerHTML = `
-  <button class="legal-tooltip__close" aria-label="Cerrar">×</button>
-  <div class="legal-tooltip__content"></div>
+// Create modal element
+const legalModal = document.createElement('div');
+legalModal.className = 'legal-modal';
+legalModal.innerHTML = `
+  <div class="legal-modal__overlay"></div>
+  <div class="legal-modal__container">
+    <div class="legal-modal__header">
+      <h2 class="legal-modal__title"></h2>
+      <button class="legal-modal__close" aria-label="Cerrar">×</button>
+    </div>
+    <div class="legal-modal__content"></div>
+  </div>
 `;
-document.body.appendChild(legalTooltip);
+document.body.appendChild(legalModal);
 
-const tooltipContent = legalTooltip.querySelector('.legal-tooltip__content');
-const tooltipClose = legalTooltip.querySelector('.legal-tooltip__close');
+const modalOverlay = legalModal.querySelector('.legal-modal__overlay');
+const modalContainer = legalModal.querySelector('.legal-modal__container');
+const modalTitle = legalModal.querySelector('.legal-modal__title');
+const modalContent = legalModal.querySelector('.legal-modal__content');
+const modalClose = legalModal.querySelector('.legal-modal__close');
 
 // ============================================
 // LEGAL CONTENT - EDIT HERE! 📝
@@ -484,47 +493,116 @@ const legalContent = {
   'aviso-legal': {
     title: 'Aviso Legal',
     content: `
-      <p><strong>INSTRUCCIONES:</strong> Reemplaza este texto con tu aviso legal.</p>
-      <p>Aquí debes incluir:</p>
+      <p><strong>Bienvenido a No estás solo.</strong> Al utilizar nuestro sitio web y contratar nuestros servicios, usted acepta los presentes Términos y Condiciones. Por favor, léalos detenidamente.</p>
+
+      <h4>1. Naturaleza del Servicio: Acompañamiento Emocional</h4>
+      <p>No estás solo es un servicio de acompañamiento basado exclusivamente en la escucha humana activa, la empatía y la contención emocional básica.</p>
+      
+      <p><strong>⚠️ IMPORTANTE (Deslinde de Responsabilidad Profesional):</strong></p>
       <ul>
-        <li>Identificación de la empresa/persona</li>
-        <li>Datos de registro</li>
-        <li>Información de contacto</li>
-        <li>Objeto y naturaleza del servicio</li>
+        <li><strong>No somos profesionales de la salud:</strong> No somos psicólogos, terapeutas ni médicos.</li>
+        <li><strong>Sin Diagnósticos:</strong> No ofrecemos diagnósticos, análisis clínicos ni tratamos trastornos de salud mental.</li>
+        <li><strong>No es Terapia:</strong> Este servicio no reemplaza ni sustituye la atención profesional de salud mental. Nada de lo expresado en las sesiones debe interpretarse como consejo clínico o intervención médica.</li>
       </ul>
-      <p>Para editar este contenido, abre <code>script.js</code> y busca la línea ~520 donde dice "LEGAL CONTENT - EDIT HERE".</p>
+
+      <h4>2. Protocolo de Emergencias y Crisis</h4>
+      <p>Este servicio no es apto para emergencias. Si usted se encuentra en una situación de riesgo, tiene ideas de autolesión o vive violencia grave, debe contactar de inmediato a servicios profesionales:</p>
+      <ul>
+        <li><strong>Línea de la Vida (México):</strong> <a href="tel:8009112000">800 911 2000</a></li>
+        <li><strong>Emergencias:</strong> <a href="tel:911">911</a></li>
+      </ul>
+
+      <h4>3. Proceso de Contratación y Pagos</h4>
+      <ul>
+        <li><strong>Agendamiento:</strong> Las sesiones se reservan mediante nuestro calendario en línea, con duraciones de 15, 30 o 60 minutos.</li>
+        <li><strong>Pagos:</strong> El pago se realiza de forma segura a través de medios digitales antes de la sesión. Las tarifas actuales son:
+          <ul>
+            <li>15 min: $100 MXN</li>
+            <li>30 min: $200 MXN</li>
+            <li>60 min: $400 MXN</li>
+          </ul>
+        </li>
+        <li><strong>Extensión de Sesión:</strong> Al finalizar, el usuario puede solicitar tiempo adicional sujeto a disponibilidad del escucha.</li>
+      </ul>
+
+      <h4>4. Dinámica de las Sesiones</h4>
+      <ul>
+        <li><strong>Contacto:</strong> El equipo contactará al usuario al número indicado mediante llamada de voz o videollamada. Se enviará un recordatorio por WhatsApp 5 minutos antes.</li>
+        <li><strong>Libertad de Expresión:</strong> El usuario marca el ritmo y puede hablar de cualquier tema, siempre que no sea ilegal o implique daño inmediato.</li>
+        <li><strong>Anonimato:</strong> Se permite el uso de nombres ficticios para proteger la identidad del usuario.</li>
+      </ul>
+
+      <h4>5. Reglas de Convivencia y Cancelación</h4>
+      <p>Para mantener un espacio seguro, se establecen las siguientes normas:</p>
+      <ul>
+        <li>Se prohíbe cualquier comportamiento ofensivo, amenazante o inapropiado hacia el personal.</li>
+        <li>No estás solo se reserva el derecho de cancelar la sesión de forma inmediata ante cualquier falta de respeto o conducta agresiva.</li>
+      </ul>
+
+      <h4>6. Confidencialidad y Privacidad</h4>
+      <ul>
+        <li><strong>Privacidad:</strong> La información personal solo se utiliza para la gestión de las sesiones y no se comparte con terceros.</li>
+        <li><strong>No Grabación:</strong> Las sesiones son 100% confidenciales y bajo ninguna circunstancia son grabadas.</li>
+      </ul>
+
+      <h4>7. Contacto</h4>
+      <p>Para dudas, soporte o aclaraciones, el usuario puede dirigirse a: <a href="mailto:aquiestoymail@gmail.com">aquiestoymail@gmail.com</a></p>
     `
   },
   'terminos': {
     title: 'Términos y Condiciones',
     content: `
-      <p><strong>INSTRUCCIONES:</strong> Reemplaza este texto con tus términos y condiciones.</p>
-      <p>Aquí debes incluir:</p>
+      <h4>Aceptación de los términos</h4>
+      <p>Al agendar una sesión, el usuario acepta nuestras políticas de privacidad, reglas de uso y lineamientos, confirmando haber leído y entendido la naturaleza del servicio.</p>
+
+      <h4>Descripción del servicio</h4>
+      <p>Servicio de acompañamiento emocional basado en escucha activa humana y empática. Sesiones de 15, 30 o 60 minutos por llamada de voz o videollamada.</p>
+
+      <h4>Obligaciones del usuario</h4>
       <ul>
-        <li>Aceptación de los términos</li>
-        <li>Descripción del servicio</li>
-        <li>Obligaciones del usuario</li>
-        <li>Política de cancelación</li>
-        <li>Limitación de responsabilidad</li>
-        <li>Modificaciones de los términos</li>
+        <li>Mantener comportamiento respetuoso (conductas ofensivas cancelan la sesión inmediatamente)</li>
+        <li>Proporcionar número de contacto válido</li>
+        <li>No tratar temas de actividades ilegales o daño inmediato</li>
       </ul>
-      <p>Para editar este contenido, abre <code>script.js</code> y busca la línea ~520 donde dice "LEGAL CONTENT - EDIT HERE".</p>
+
+      <h4>Política de cancelación</h4>
+      <p>La violación de lineamientos faculta a "No estás solo" para cancelar la sesión sin reembolso. Extensiones de tiempo sujetas a disponibilidad.</p>
+
+      <h4>Limitación de responsabilidad</h4>
+      <ul>
+        <li><strong>No somos profesionales:</strong> No ofrecemos diagnósticos ni tratamientos clínicos</li>
+        <li><strong>No sustituye terapia profesional</strong></li>
+        <li><strong>Casos de crisis:</strong> No es servicio de emergencias. Contacte Línea de la Vida (800 911 2000) o 911</li>
+      </ul>
+
+      <h4>Modificaciones</h4>
+      <p>Nos reservamos el derecho de actualizar estos términos para cumplir con cambios legales o mejoras en el servicio.</p>
     `
   },
   'privacidad': {
     title: 'Política de Privacidad',
     content: `
-      <p><strong>INSTRUCCIONES:</strong> Reemplaza este texto con tu política de privacidad.</p>
-      <p>Aquí debes incluir:</p>
+      <h4>Qué datos recopilamos</h4>
+      <p>Solo información necesaria para la sesión: nombre (puede ser ficticio) y número telefónico para contacto vía voz o WhatsApp.</p>
+
+      <h4>Cómo usamos los datos</h4>
+      <p>Exclusivamente para gestión de citas, recordatorios (5 min antes) y realizar la llamada o videollamada.</p>
+
+      <h4>Con quién compartimos</h4>
+      <p><strong>Con nadie.</strong> No compartimos información personal con terceros bajo ninguna circunstancia.</p>
+
+      <h4>Cómo protegemos los datos</h4>
       <ul>
-        <li>Qué datos personales recopilas</li>
-        <li>Cómo usas los datos</li>
-        <li>Con quién compartes los datos</li>
-        <li>Cómo proteges los datos</li>
-        <li>Derechos del usuario (ARCO)</li>
-        <li>Uso de cookies (si aplica)</li>
+        <li>Sesiones 100% confidenciales</li>
+        <li>No grabamos audio ni video</li>
+        <li>Estrictas reglas internas de respeto y privacidad</li>
       </ul>
-      <p>Para editar este contenido, abre <code>script.js</code> y busca la línea ~520 donde dice "LEGAL CONTENT - EDIT HERE".</p>
+
+      <h4>Derechos del usuario (ARCO)</h4>
+      <p>Derecho a solicitar eliminación de sus datos. Para dudas: <a href="mailto:aquiestoymail@gmail.com">aquiestoymail@gmail.com</a></p>
+
+      <h4>Uso de cookies</h4>
+      <p>Utilizamos cookies técnicas para procesar pagos seguros en línea.</p>
     `
   }
 };
@@ -532,67 +610,39 @@ const legalContent = {
 // Get all legal links
 const legalLinks = document.querySelectorAll('.legal-link');
 
-// Position tooltip near mouse
-function positionTooltip(e) {
-  const tooltipRect = legalTooltip.getBoundingClientRect();
-  const padding = 20;
-
-  let left = e.clientX + padding;
-  let top = e.clientY + padding;
-
-  // Keep tooltip within viewport
-  if (left + tooltipRect.width > window.innerWidth) {
-    left = e.clientX - tooltipRect.width - padding;
-  }
-
-  if (top + tooltipRect.height > window.innerHeight) {
-    top = e.clientY - tooltipRect.height - padding;
-  }
-
-  legalTooltip.style.left = left + 'px';
-  legalTooltip.style.top = top + 'px';
-}
-
-// Show tooltip on hover
+// Open modal on click
 legalLinks.forEach(link => {
-  link.addEventListener('mouseenter', function (e) {
+  link.addEventListener('click', function (e) {
     e.preventDefault();
 
     const legalType = this.getAttribute('data-legal-type');
     const content = legalContent[legalType];
 
     if (content) {
-      tooltipContent.innerHTML = `
-        <h3>${content.title}</h3>
-        ${content.content}
-      `;
-
-      legalTooltip.classList.add('active');
-      positionTooltip(e);
+      modalTitle.textContent = content.title;
+      modalContent.innerHTML = content.content;
+      legalModal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
   });
-
-  link.addEventListener('mousemove', positionTooltip);
-
-  link.addEventListener('mouseleave', function () {
-    legalTooltip.classList.remove('active');
-  });
-
-  // Prevent default link behavior
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-  });
 });
 
-// Close tooltip when clicking close button
-tooltipClose.addEventListener('click', function () {
-  legalTooltip.classList.remove('active');
-});
+// Close modal function
+function closeModal() {
+  legalModal.classList.remove('active');
+  document.body.style.overflow = ''; // Restore scrolling
+}
 
-// Close tooltip when clicking outside
-document.addEventListener('click', function (e) {
-  if (!e.target.closest('.legal-link') && !e.target.closest('.legal-tooltip')) {
-    legalTooltip.classList.remove('active');
+// Close modal when clicking close button
+modalClose.addEventListener('click', closeModal);
+
+// Close modal when clicking overlay
+modalOverlay.addEventListener('click', closeModal);
+
+// Close modal on Escape key
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && legalModal.classList.contains('active')) {
+    closeModal();
   }
 });
 

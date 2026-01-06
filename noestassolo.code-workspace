@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "noestassolo",
+			"path": "."
+		},
+		{
+			"name": "node_modules",
+			"path": "../No estas solo/node_modules"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "noestassolo"
+	}
+}

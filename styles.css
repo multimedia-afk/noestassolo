@@ -874,60 +874,178 @@ strong {
   color: var(--color-white);
 }
 
-/* Legal link tooltips */
+/* Legal link styling */
 .legal-link {
   position: relative;
   cursor: pointer;
 }
 
-.legal-tooltip {
+/* Legal Modal */
+.legal-modal {
   position: fixed;
-  background: var(--color-white);
-  color: var(--color-text);
-  padding: var(--space-lg);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-xl);
-  max-width: 400px;
-  width: 90vw;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 10000;
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--transition-base), visibility var(--transition-base);
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
 }
 
-.legal-tooltip.active {
+.legal-modal.active {
   opacity: 1;
   visibility: visible;
 }
 
-.legal-tooltip h3 {
-  color: var(--color-primary-dark);
-  margin-bottom: var(--space-md);
-  font-size: var(--font-size-lg);
-}
-
-.legal-tooltip p {
-  font-size: var(--font-size-sm);
-  line-height: 1.6;
-  margin-bottom: var(--space-sm);
-}
-
-.legal-tooltip__close {
+.legal-modal__overlay {
   position: absolute;
-  top: var(--space-sm);
-  right: var(--space-sm);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.legal-modal__container {
+  position: relative;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  max-width: 700px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.legal-modal__header {
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 1px solid rgba(107, 154, 196, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.legal-modal__title {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.legal-modal__close {
   background: transparent;
   border: none;
-  font-size: var(--font-size-xl);
+  font-size: 2rem;
   color: var(--color-text-light);
   cursor: pointer;
-  padding: var(--space-xs);
+  padding: 0;
   line-height: 1;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+  flex-shrink: 0;
 }
 
-.legal-tooltip__close:hover {
+.legal-modal__close:hover {
+  background: rgba(107, 154, 196, 0.1);
   color: var(--color-primary);
+  transform: rotate(90deg);
+}
+
+.legal-modal__content {
+  padding: var(--space-xl);
+  overflow-y: auto;
+  flex: 1;
+  color: var(--color-text);
+}
+
+/* Custom scrollbar for modal content */
+.legal-modal__content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.legal-modal__content::-webkit-scrollbar-track {
+  background: rgba(107, 154, 196, 0.1);
+  border-radius: 4px;
+}
+
+.legal-modal__content::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 4px;
+}
+
+.legal-modal__content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.legal-modal__content h4 {
+  color: var(--color-primary-dark);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.legal-modal__content h4:first-child {
+  margin-top: 0;
+}
+
+.legal-modal__content p {
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.legal-modal__content ul {
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+  padding-left: var(--space-xl);
+}
+
+.legal-modal__content li {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.legal-modal__content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.legal-modal__content a:hover {
+  color: var(--color-primary-dark);
+}
+
+.legal-modal__content strong {
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-semibold);
 }
 
 .footer__bottom {
@@ -1327,31 +1445,40 @@ strong {
   }
 
   /* Legal Tooltip - Optimized for mobile */
-  .legal-tooltip {
-    max-width: 85vw;
-    width: 85vw;
-    padding: var(--space-sm);
-    max-height: 70vh;
-    overflow-y: auto;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
+  /* Legal Modal - Mobile */
+  .legal-modal__container {
+    max-width: 95vw;
+    max-height: 90vh;
+    margin: var(--space-sm);
   }
 
-  .legal-tooltip h3 {
+  .legal-modal__header {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .legal-modal__title {
+    font-size: var(--font-size-xl);
+    padding-right: var(--space-md);
+  }
+
+  .legal-modal__close {
+    font-size: 1.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .legal-modal__content {
+    padding: var(--space-lg);
+  }
+
+  .legal-modal__content h4 {
     font-size: 1rem;
-    margin-bottom: var(--space-sm);
+    margin-top: var(--space-md);
   }
 
-  .legal-tooltip p {
-    font-size: 0.813rem;
-    line-height: 1.5;
-    margin-bottom: var(--space-xs);
-  }
-
-  .legal-tooltip__close {
-    font-size: 1.25rem;
-    padding: 0.25rem;
+  .legal-modal__content p,
+  .legal-modal__content ul {
+    font-size: 0.938rem;
   }
 
   /* Utility classes for mobile */
@@ -1783,28 +1910,7 @@ textarea:focus {
     color: var(--color-text-light);
   }
 
-  /* Legal Tooltips */
-  .legal-tooltip {
-    background: var(--color-dark-bg-secondary);
-    color: var(--color-text);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
 
-  .legal-tooltip h3 {
-    color: var(--color-primary-dark);
-  }
-
-  .legal-tooltip p {
-    color: var(--color-text-light);
-  }
-
-  .legal-tooltip__close {
-    color: var(--color-text-light);
-  }
-
-  .legal-tooltip__close:hover {
-    color: var(--color-primary);
-  }
 
   /* WhatsApp Button - maintain brand color */
   .whatsapp-float {
